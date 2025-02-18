@@ -43,7 +43,7 @@ export default function Home() {
             农历
           </div>
           <div className="text-5xl font-bold text-gray-800">
-            {lunar.lunarMonthName}
+            {lunar.lunarMonthName} {/* 只保留一个“月”字 */}
           </div>
           <div className="text-5xl font-bold text-gray-800">
             {formatLunarDay(lunar.lunarDay)}
