@@ -59,7 +59,7 @@ export default function Home() {
             {time.getFullYear()}年
           </div>
           <div className="text-8xl font-bold text-gray-800">
-            {time.getMonth() + 1}月
+            {time.getMonth() }月
           </div>
           <div className="text-9xl font-bold text-gray-800">
             {time.getDate()}日
