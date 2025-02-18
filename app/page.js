@@ -1,5 +1,6 @@
 'use client';
 import Lunar from 'lunar-calendar';
+import { useState, useEffect } from 'react';
 
 function formatLunarDay(day) {
   const numbers = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
@@ -18,31 +19,53 @@ function formatLunarDay(day) {
 }
 
 export default function Home() {
-  const today = new Date();
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
   const lunar = Lunar.solarToLunar(
-    today.getFullYear(),
-    today.getMonth() + 1,
-    today.getDate()
+    time.getFullYear(),
+    time.getMonth() + 1,
+    time.getDate()
   );
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-100 p-8">
-      <div className="text-center space-y-8">
-        <h1 className="text-8xl font-bold text-gray-800 mb-8">
-          {today.toLocaleDateString('zh-CN', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          })}
-        </h1>
-        
-        <div className="bg-white rounded-2xl shadow-xl p-16">
-          <h2 className="text-7xl font-semibold text-gray-700">
-            农历 {lunar.lunarMonthName}{formatLunarDay(lunar.lunarDay)}
-            {lunar.isLeapMonth && '(闰)'}
-          </h2>
+    <main className="min-h-screen w-full flex items-center justify-center bg-gray-50">
+      <div className="w-full max-w-md mx-auto px-6 py-12 space-y-12">
+        {/* 公历日期 */}
+        <div className="space-y-4">
+          <div className="text-6xl font-bold text-gray-800">
+            {time.getFullYear()}年
+          </div>
+          <div className="text-8xl font-bold text-gray-800">
+            {time.getMonth() + 1}月
+          </div>
+          <div className="text-9xl font-bold text-gray-800">
+            {time.getDate()}日
+          </div>
+        </div>
+
+        {/* 农历日期 */}
+        <div className="bg-white rounded-3xl shadow-lg p-8 space-y-2">
+          <div className="text-4xl font-medium text-gray-600">
+            农历
+          </div>
+          <div className="text-5xl font-bold text-gray-800">
+            {lunar.lunarMonthName}月
+          </div>
+          <div className="text-5xl font-bold text-gray-800">
+            {formatLunarDay(lunar.lunarDay)}
+          </div>
+          {lunar.isLeapMonth && (
+            <div className="text-2xl text-gray-500">(闰)</div>
+          )}
         </div>
       </div>
     </main>
-  )
+  );
 }
