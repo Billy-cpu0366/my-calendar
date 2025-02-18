@@ -55,10 +55,10 @@ export default function Home() {
           <div className="text-4xl font-medium text-gray-600">
             农历
           </div>
-          <div className="text-5xl font-bold text-gray-800">
+          <div className="text-6xl font-bold text-gray-800">
             {lunar.lunarMonthName}月
           </div>
-          <div className="text-5xl font-bold text-gray-800">
+          <div className="text-6xl font-bold text-gray-800">
             {formatLunarDay(lunar.lunarDay)}
           </div>
           {lunar.isLeapMonth && (
