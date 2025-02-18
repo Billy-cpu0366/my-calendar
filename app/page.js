@@ -39,13 +39,13 @@ export default function Home() {
       <div className="w-full max-w-md mx-auto px-6 py-12 space-y-12">
         {/* 农历日期 */}
         <div className="bg-white rounded-3xl shadow-lg p-8 space-y-2">
-          <div className="text-4xl font-medium text-gray-600">
+          <div className="text-6xl font-medium text-gray-600">
             农历
           </div>
-          <div className="text-5xl font-bold text-gray-800">
+          <div className="text-7xl font-bold text-gray-800">
             正月
           </div>
-          <div className="text-6xl font-bold text-gray-800">
+          <div className="text-8xl font-bold text-gray-800">
             {formatLunarDay(lunar.lunarDay)}
           </div>
           {lunar.isLeapMonth && (
