@@ -37,33 +37,33 @@ export default function Home() {
   return (
     <main className="min-h-screen w-full flex items-center justify-center bg-gray-50">
       <div className="w-full max-w-md mx-auto px-6 py-12 space-y-12">
-        {/* 公历日期 */}
-        <div className="space-y-4">
-          <div className="text-6xl font-bold text-gray-800">
-            {time.getFullYear()}年
-          </div>
-          <div className="text-8xl font-bold text-gray-800">
-            {time.getMonth() + 1}月
-          </div>
-          <div className="text-9xl font-bold text-gray-800">
-            {time.getDate()}日
-          </div>
-        </div>
-
         {/* 农历日期 */}
         <div className="bg-white rounded-3xl shadow-lg p-8 space-y-2">
           <div className="text-4xl font-medium text-gray-600">
             农历
           </div>
-          <div className="text-6xl font-bold text-gray-800">
-            {lunar.lunarMonthName}月
+          <div className="text-5xl font-bold text-gray-800">
+            {lunar.lunarMonthName}
           </div>
-          <div className="text-6xl font-bold text-gray-800">
+          <div className="text-5xl font-bold text-gray-800">
             {formatLunarDay(lunar.lunarDay)}
           </div>
           {lunar.isLeapMonth && (
             <div className="text-2xl text-gray-500">(闰)</div>
           )}
+        </div>
+
+        {/* 公历日期 */}
+        <div className="space-y-4">
+          <div className="text-5xl font-bold text-gray-800">
+            {time.getFullYear()}年
+          </div>
+          <div className="text-6xl font-bold text-gray-800">
+            {time.getMonth() + 1}月
+          </div>
+          <div className="text-7xl font-bold text-gray-800">
+            {time.getDate()}日
+          </div>
         </div>
       </div>
     </main>
